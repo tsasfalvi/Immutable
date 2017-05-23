@@ -1,44 +1,41 @@
 package com.epam.training;
 
+import com.google.common.collect.ImmutableList;
+
 import java.util.Date;
 import java.util.List;
 
 public class Planet {
 
-	String name;
+	private final String name;
 
-	protected Date dateOfDiscovery;
+	private final Date dateOfDiscovery;
 
-	private List<Moon> moons;
+	private final List<Moon> moons;
 
-	public Planet(String name, Date dateOfDiscovery, List<Moon> moons) {
+	private Planet(String name, Date dateOfDiscovery, List<Moon> moons) {
 		this.name = name;
 		this.dateOfDiscovery = dateOfDiscovery;
 		this.moons = moons;
+	}
+
+	public static Planet newInstance(String name, Date dateOfDiscovery, List<Moon> moons) {
+		Date dateOfDiscoveryClone = (Date) dateOfDiscovery.clone();
+		ImmutableList<Moon> moonsCopy = ImmutableList.copyOf(moons);
+
+		return new Planet(name, dateOfDiscoveryClone, moonsCopy);
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	public Date getDateOfDiscovery() {
-		return dateOfDiscovery;
-	}
-
-	public void setDateOfDiscovery(Date dateOfDiscovery) {
-		this.dateOfDiscovery = dateOfDiscovery;
+		return (Date) dateOfDiscovery.clone();
 	}
 
 	public List<Moon> getMoons() {
 		return moons;
-	}
-
-	public void setMoons(List<Moon> moons) {
-		this.moons = moons;
 	}
 
 }
