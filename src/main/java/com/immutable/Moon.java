@@ -1,4 +1,4 @@
-package com.epam.training;
+package com.immutable;
 
 
 public class Moon {

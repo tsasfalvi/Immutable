@@ -1,4 +1,4 @@
-package com.epam.training;
+package com.immutable;
 
 import com.google.common.collect.ImmutableList;
 
